@@ -1,9 +1,33 @@
 import React from 'react'
-function WriteBlog(){
-    return(
-        <div>
-            <h1> Welcome this is homepage </h1>
+import axios from 'axios';
+ 
+export default function WriteBlog() {
+ 
+    const handleClick = () => {
+        axios.post('https://jsonplaceholder.typicode.com/posts')
+       
+          .then(function (response) {
+            console.log(response);
+            // go to another page  
+           
+          })
+          .catch(function (error) { console.log(error); });
+   
+      };
+  return (
+    <div className='PostsWriteBlog'>
+        {" "}
+        <div className='cpContainer'>
+        <h1> Create a Blog </h1>
+        <div className='inputGp'>
+        <div className='inputGp'>
+            <label>Title:</label><br/>
+            <input placeholder="Title..."/></div>
+            <label>Post:</label><br></br>
+            <textarea placeholder='Post...'/>
+            <button onClick={handleClick}>Submit Blog</button>
         </div>
-    )
+        </div>
+    </div>
+  )
 }
-export default WriteBlog;
